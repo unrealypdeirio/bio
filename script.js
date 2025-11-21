@@ -274,5 +274,12 @@ function updateAvatar(imageUrl) {
     }
 }
 
+fetch("config.json")
+    .then(r => r.json())
+    .then(data => {
+        updateSocialLinks(data.telegram, data.discord);
+        updateAvatar(data.avatar);
+    });
+
 window.updateSocialLinks = updateSocialLinks;
 window.updateAvatar = updateAvatar;
